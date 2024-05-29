@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Path
 from model import Todo
+from datetime import datetime
 
 todo_router = APIRouter()
 
@@ -35,11 +36,3 @@ async def delete_todo(todo_id: int = Path(..., title="the ID of the todo to dele
             del todo_list[index]
             return {"msg": f"Todo with ID {todo_id} deleted successfully"}
     return {"msg": "Todo with supplied ID doesn't exist"}
-
-@todo_router.post("/todo")
-async def add_todo(todo: Todo) -> dict:
-    todo.id=len(todo_list) + 1
-    todo_list.append(todo)
-    return {
-        "msg" : "todo added successfully"
-    }
