@@ -9,11 +9,11 @@ origins =["http://127.0.0.1:5500"]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origns = origins,
-    allow_credetials=True,
-    allow_methods=[*],
-    allow_hears=[*]
-)
+    allow_origins = origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+);
 
 @app.get("/")
 async def welcome() -> dict:
