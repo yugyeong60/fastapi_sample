@@ -6,7 +6,7 @@ import uvicorn
 
 app = FastAPI()
 
-origins =["http://127.0.0.1:5500", "http://52.23.116.58"]
+origins =["http://127.0.0.1:5500", "http://52.23.116.58:8081"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -25,4 +25,4 @@ async def welcome() -> dict:
 app.include_router(todo_router)  # added
 
 if __name__ == '__main__':
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=80, reload=True)
